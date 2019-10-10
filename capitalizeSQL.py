@@ -2,6 +2,7 @@ def convertToCapital(listOfLines):
     listOfSQLKeywords = ["select","from","where","inner","natural","join","outer","right"
                         ,"left","full","having","as","create","view","is","null","on","using"
                         ,"count","not","like","and","or","order","by","group","desc","union","with"
+                        ,"distinct"
                         ]
 
     wordCount = len(listOfSQLKeywords)
@@ -16,7 +17,7 @@ def convertToCapital(listOfLines):
         newString = ""
 
         for i in range(len(listOfWords)):
-            if listOfWords[i] in listOfSQLKeywords:
+            if listOfWords[i].lower() in listOfSQLKeywords:
                 newString += listOfWords[i].upper() + " "
             else:
                 newString += listOfWords[i] + " "
