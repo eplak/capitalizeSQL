@@ -1,9 +1,7 @@
 def convertToCapital(listOfLines):
-    listOfSQLKeywords = ["select","from","where","inner","natural","join","outer","right"
-                        ,"left","full","having","as","create","view","is","null","on","using"
-                        ,"count","not","like","and","or","order","by","group","desc","union","with"
-                        ,"distinct"
-                        ]
+    listOfSQLKeywords = []
+    for line in open("SQLkeywords.txt", "r"):
+        listOfSQLKeywords.append(line.strip())
 
     wordCount = len(listOfSQLKeywords)
     for i in range(wordCount):
