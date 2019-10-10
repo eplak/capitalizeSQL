@@ -1,7 +1,11 @@
+import glob
+
+
+listOfSQLKeywords = []
+for line in open("SQLkeywords.txt", "r"):
+    listOfSQLKeywords.append(line.strip())
+
 def convertToCapital(listOfLines):
-    listOfSQLKeywords = []
-    for line in open("SQLkeywords.txt", "r"):
-        listOfSQLKeywords.append(line.strip())
 
     wordCount = len(listOfSQLKeywords)
     for i in range(wordCount):
@@ -27,14 +31,9 @@ def convertToCapital(listOfLines):
 
     return newListOfLines
 
-filename = input("filename: ") + ".sql"
-
-infile = open(filename, "r")
-
-
-newFile = convertToCapital(infile.readlines())
-infile.close()
-outfile = open(filename, "w")
-
-outfile.writelines(newFile)
-
+for filename in glob.glob("*.sql"):
+    infile = open(filename, "r")
+    newFile = convertToCapital(infile.readlines())
+    infile.close()
+    outfile = open(filename, "w")
+    outfile.writelines(newFile)
